@@ -1,0 +1,7 @@
+#!/bin/bash
+
+pipework --wait
+dnsmasq
+
+export PATH=$PATH:/root/apache-cassandra/bin
+/bin/bash

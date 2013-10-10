@@ -1,0 +1,21 @@
+#!/bin/bash
+
+pipework --wait
+dnsmasq
+
+IP=$(grep -w $(hostname) /etc/dnsmasq.d/0hosts | cut -f 3 -d / | sed -e 's/"//g')
+CONFIG=/root/apache-cassandra/conf/cassandra.yaml
+ENV=/root/apache-cassandra/conf/cassandra-env.sh
+
+# Change the listen address so that we can communicate with other nodes
+sed -i -e "s/^listen_address.*/listen_address: $IP/"   $CONFIG
+
+# Fix JMX settings
+sed -i -e 's/# JVM_OPTS="$JVM_OPTS -Djava.rmi.server.hostname=<public name>"/JVM_OPTS="$JVM_OPTS -Djava.rmi.server.hostname='$IP'"/g' $ENV
+
+# Fix seeds list for the seed node
+if [[ $(hostname) -eq "cass1" ]]; then
+	sed -i -e 's/seeds: "cass1"/seeds: "192.168.100.1"/g' $CONFIG
+fi
+
+/root/apache-cassandra/bin/cassandra -f
