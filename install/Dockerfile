@@ -11,7 +11,7 @@ RUN install-cassandra 1.2.10
 # Install start scripts and hosts file
 ADD bin/pipework /usr/bin/
 ADD bin/start-cassandra /usr/bin/
-ADD bin/start-shell /usr/bin/
+ADD bin/run-command /usr/bin/
 
 # Configure host names
 ADD etc/cassandra.hosts /etc/dnsmasq.d/0hosts

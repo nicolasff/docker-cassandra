@@ -12,8 +12,7 @@ Cassandra nodes are created with their own IP address and configured hostname:
     Starting node 2
     Starting node 3
     
-    $ ./client.sh 
-    root@cass254:/# nodetool -h cass1 status
+    $ ./client.sh nodetool -h cass1 status
     Datacenter: datacenter1
     =======================
     Status=Up/Down
@@ -70,7 +69,7 @@ Run `sudo docker ps` to list your Cassandra nodes:
 Cassandra nodes expose port 9160 for Thrift. Use `sudo docker port <container-id> 9160` or `sudo docker ps` to find the local port it is mapped to.
 
 `client.sh` creates a docker container with access to the Cassandra cluster network (`192.168.100.0/24`) and gives it the IP `192.168.100.254`.
-From there, you can run `nodetool`, `cassandra-cli`, and `cqlsh` to explore your cluster.
+It runs any command that is passed to it, e.g. `nodetool`, `cassandra-cli`, and `cqlsh`... You can also open a shell with `./client.sh bash`.
 
 There is currently no way to have two client shells open at the same time.
 
