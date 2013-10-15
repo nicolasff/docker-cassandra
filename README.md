@@ -68,10 +68,10 @@ Run `sudo docker ps` to list your Cassandra nodes:
 
 Cassandra nodes expose port 9160 for Thrift. Use `sudo docker port <container-id> 9160` or `sudo docker ps` to find the local port it is mapped to.
 
-`client.sh` creates a docker container with access to the Cassandra cluster network (`192.168.100.0/24`) and gives it the IP `192.168.100.254`.
-It runs any command that is passed to it, e.g. `nodetool`, `cassandra-cli`, and `cqlsh`... You can also open a shell with `./client.sh bash`.
+`client.sh` creates a docker container with access to the Cassandra cluster network (`192.168.100.0/24`). The first client is given the name `cass254`
+with IP `192.168.100.254`, the next one `cass253`, etc. Names are reused when client containers are stopped.
 
-There is currently no way to have two client shells open at the same time.
+`client.sh` runs any command that is passed to it, e.g. `nodetool`, `cassandra-cli`, `cqlsh`... You can also open a shell with `./client.sh bash`.
 
 ### 6. Terminate your cluster
 
