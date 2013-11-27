@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE=cassandra:1.2.11
+IMAGE=cassandra:1.2.12
 
 if sudo docker ps | grep $IMAGE >/dev/null; then
 	cids=$(sudo docker ps | grep $IMAGE | awk '{ print $1 }')
