@@ -6,7 +6,7 @@ RUN apt-get install -y wget openjdk-6-jre dnsmasq-base
 
 # Install Cassandra
 ADD bin/install-cassandra /usr/bin/install-cassandra
-RUN install-cassandra 1.2.11
+RUN install-cassandra 1.2.12
 
 # Install start scripts and hosts file
 ADD bin/pipework /usr/bin/

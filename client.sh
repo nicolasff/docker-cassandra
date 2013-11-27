@@ -7,7 +7,7 @@ if [[ -z $1 ]]; then
 fi
 
 BRIDGE=br1
-VERSION=1.2.11
+VERSION=1.2.12
 
 # We want to start the client containers from cass254, with decreasing IDs
 id=254

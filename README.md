@@ -3,7 +3,7 @@ Docker setup for Apache Cassandra
 
 This repository contains a set of scripts and configuration files to run a Cassandra cluster
 from [Docker](https://www.docker.io/) containers. The current version of this repository is
-configured to create a Cassandra 1.2.11 image and cluster.
+configured to create a Cassandra 1.2.12 image and cluster.
 
 Cassandra nodes are created with their own IP address and configured hostname:
 
@@ -42,15 +42,15 @@ The latest version is on GitHub at https://github.com/jpetazzo/pipework.
 
 ### 3. Create a Docker image for Cassandra
 
-To create a Cassandra 1.2.11 image and tag it, run:
+To create a Cassandra 1.2.12 image and tag it, run:
 
-    $ sudo docker build -t cassandra:1.2.11 install/
+    $ sudo docker build -t cassandra:1.2.12 install/
 
 You should then see it appear in your list of Docker images:
 
     $ sudo docker images
     REPOSITORY          TAG                 ID                  CREATED              SIZE
-    cassandra           1.2.11              b9ba84a33bb5        About a minute ago   12.29 kB (virtual 404.7 MB)
+    cassandra           1.2.12              b9ba84a33bb5        About a minute ago   12.29 kB (virtual 404.7 MB)
 
 ### 4. Start a cluster
 
@@ -60,9 +60,9 @@ Run `sudo docker ps` to list your Cassandra nodes:
 
     $ sudo docker ps
     ID                  IMAGE               COMMAND                CREATED             STATUS              PORTS
-    99d67692f535        cassandra:1.2.11    /usr/bin/start-cassa   10 minutes ago      Up 10 minutes       49332->9160         
-    fe7e2b13cb9e        cassandra:1.2.11    /usr/bin/start-cassa   10 minutes ago      Up 10 minutes       49331->9160         
-    f21da380b00c        cassandra:1.2.11    /usr/bin/start-cassa   10 minutes ago      Up 10 minutes       49330->9160  
+    99d67692f535        cassandra:1.2.12    /usr/bin/start-cassa   10 minutes ago      Up 10 minutes       49332->9160         
+    fe7e2b13cb9e        cassandra:1.2.12    /usr/bin/start-cassa   10 minutes ago      Up 10 minutes       49331->9160         
+    f21da380b00c        cassandra:1.2.12    /usr/bin/start-cassa   10 minutes ago      Up 10 minutes       49330->9160  
 
 ### 5. Connect to your cluster
 
