@@ -3,7 +3,7 @@
 VERSION=$1
 
 # Download and extract
-wget http://apache.mirrors.timporter.net/cassandra/$VERSION/apache-cassandra-$VERSION-bin.tar.gz
+wget http://archive.apache.org/dist/cassandra/$VERSION/apache-cassandra-$VERSION-bin.tar.gz
 tar -xvzf apache-cassandra-$VERSION-bin.tar.gz
 rm -f apache-cassandra-$VERSION-bin.tar.gz
 mv apache-cassandra-$VERSION /root/
