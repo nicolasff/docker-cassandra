@@ -2,17 +2,16 @@ FROM ubuntu:precise
 MAINTAINER Nicolas Favre-Felix <n.favrefelix@gmail.com>
 
 # Install dependencies
-RUN apt-get install -y wget dnsmasq-base 
-
 RUN apt-get install -y software-properties-common python-software-properties
 RUN add-apt-repository -y ppa:webupd8team/java
 RUN apt-get -y update
 RUN /bin/echo debconf shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
 RUN apt-get -y install oracle-java7-installer oracle-java7-set-default
+RUN apt-get install -y wget dnsmasq-base python2.7
 
 # Install Cassandra
 ADD bin/install-cassandra /usr/bin/install-cassandra
-RUN install-cassandra 2.0.3
+RUN install-cassandra VERSION
 
 # Install start scripts and hosts file
 ADD bin/pipework /usr/bin/

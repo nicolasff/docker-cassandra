@@ -1,11 +1,11 @@
 #!/bin/bash
 
-if [[ -z $1 ]]; then
-	echo "Usage: $0 <NUMBER OF NODES>"
+if [[ $# -ne 2 ]]; then
+	echo "Usage: $0 <VERSION> <NUMBER OF NODES>"
 	exit 1
 fi
-NODES=$1
-VERSION=2.0.3
+VERSION=$1
+NODES=$2
 BRIDGE=br1
 
 for id in $(seq 1 $NODES); do

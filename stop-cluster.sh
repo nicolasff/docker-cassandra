@@ -1,6 +1,11 @@
 #!/bin/bash
 
-IMAGE=cassandra:2.0.3
+if [[ $# -ne 1 ]]; then
+	echo "Usage: $0 <VERSION>"
+	exit 1
+fi
+VERSION=$1
+IMAGE=cassandra:$VERSION
 
 if sudo docker ps | grep $IMAGE >/dev/null; then
 	cids=$(sudo docker ps | grep $IMAGE | awk '{ print $1 }')

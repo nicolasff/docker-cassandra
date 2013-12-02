@@ -3,7 +3,7 @@ Docker setup for Apache Cassandra
 
 This repository contains a set of scripts and configuration files to run a Cassandra cluster
 from [Docker](https://www.docker.io/) containers. The current version of this repository is
-configured to create a Cassandra 2.0.3 image and cluster.
+configured to create a Cassandra 1.2 or 2.0 image and cluster.
 
 Cassandra nodes are created with their own IP address and configured hostname:
 
@@ -12,7 +12,7 @@ Cassandra nodes are created with their own IP address and configured hostname:
     Starting node 2
     Starting node 3
     
-    $ ./client.sh nodetool -h cass1 status
+    $ ./client.sh 2.0.3 nodetool -h cass1 status
     Datacenter: datacenter1
     =======================
     Status=Up/Down
@@ -44,7 +44,7 @@ The latest version is on GitHub at https://github.com/jpetazzo/pipework.
 
 To create a Cassandra 2.0.3 image and tag it, run:
 
-    $ sudo docker build -t cassandra:2.0.3 install/
+	$ sudo make image VERSION=2.0.3
 
 You should then see it appear in your list of Docker images:
 
@@ -54,7 +54,7 @@ You should then see it appear in your list of Docker images:
 
 ### 4. Start a cluster
 
-Run `./start-cluster.sh 3` to create a cluster of 3 nodes. They are given an IP address and name each, from `cass1` (`192.168.100.1`) to `cass3` (`192.168.100.3`).
+Run `./start-cluster.sh 2.0.3 3` to create a cluster of 3 nodes running Cassandra 2.0.3. They are given an IP address and name each, from `cass1` (`192.168.100.1`) to `cass3` (`192.168.100.3`).
 
 Run `sudo docker ps` to list your Cassandra nodes:
 
@@ -71,11 +71,11 @@ Cassandra nodes expose port 9160 for Thrift. Use `sudo docker port <container-id
 `client.sh` creates a docker container with access to the Cassandra cluster network (`192.168.100.0/24`). The first client is given the name `cass254`
 with IP `192.168.100.254`, the next one `cass253`, etc. Names are reused when client containers are stopped.
 
-`client.sh` runs any command that is passed to it, e.g. `nodetool`, `cassandra-cli`, `cqlsh`... You can also open a shell with `./client.sh bash`.
+`client.sh` runs any command that is passed to it, e.g. `nodetool`, `cassandra-cli`, `cqlsh`... You can also open a shell with `./client.sh 2.0.3 bash`.
 
 ### 6. Terminate your cluster
 
-	$ ./stop-cluster.sh 
+	$ ./stop-cluster.sh 2.0.3
     Killing and removing containers 99d67692f535 fe7e2b13cb9e f21da380b00c
     
     $ sudo docker ps

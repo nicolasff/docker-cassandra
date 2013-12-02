@@ -1,13 +1,13 @@
 #!/bin/bash
 
-if [[ -z $1 ]]; then
-	echo "Usage: $0 CMD [ARGS...]"
+if [[ $# -ne 2 ]]; then
+	echo "Usage: $0 VERSION CMD [ARGS...]"
 	echo "Creates a container that is connected to the Cassandra cluster, and run a command there"
 	exit 1
 fi
 
 BRIDGE=br1
-VERSION=2.0.3
+VERSION=$1
 
 # We want to start the client containers from cass254, with decreasing IDs
 id=254
@@ -40,6 +40,7 @@ while true; do
 done
 
 # start container
+shift # remove version number
 cid=$(sudo docker run -i -d -dns 127.0.0.1 -h $hostname -t cassandra:$VERSION /usr/bin/run-command $@)
 
 # Add network interface
