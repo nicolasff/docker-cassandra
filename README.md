@@ -7,7 +7,7 @@ configured to create a Cassandra 1.2 or 2.0 image and cluster.
 
 Cassandra nodes are created with their own IP address and configured hostname:
 
-    $ ./start-cluster.sh 3
+    $ ./start-cluster.sh 2.0.3 3
     Starting node 1
     Starting node 2
     Starting node 3
