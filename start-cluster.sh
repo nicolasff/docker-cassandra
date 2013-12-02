@@ -5,7 +5,7 @@ if [[ -z $1 ]]; then
 	exit 1
 fi
 NODES=$1
-VERSION=1.2.12
+VERSION=2.0.3
 BRIDGE=br1
 
 for id in $(seq 1 $NODES); do
