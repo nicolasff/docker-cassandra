@@ -13,6 +13,6 @@ endif
 
 image: check-version
 	sed -r -e "s/VERSION/$(VERSION)/g" install/Dockerfile.template > install/Dockerfile
-	docker build -t cassandra:$(VERSION) install/
+	sudo docker build -t cassandra:$(VERSION) install/
 	rm -f install/Dockerfile
 

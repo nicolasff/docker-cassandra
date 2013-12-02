@@ -1,11 +1,13 @@
 #!/bin/bash
 
-if [[ $# -ne 1 ]]; then
-	echo "Usage: $0 <VERSION>"
-	exit 1
-fi
+source install/common.sh
+
+check_usage $# 1 "Usage: $0 <VERSION>"
+
 VERSION=$1
 IMAGE=cassandra:$VERSION
+
+test_image $VERSION
 
 if sudo docker ps | grep $IMAGE >/dev/null; then
 	cids=$(sudo docker ps | grep $IMAGE | awk '{ print $1 }')

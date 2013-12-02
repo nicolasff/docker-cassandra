@@ -1,13 +1,13 @@
 #!/bin/bash
 
-if [[ $# -ne 2 ]]; then
-	echo "Usage: $0 VERSION CMD [ARGS...]"
-	echo "Creates a container that is connected to the Cassandra cluster, and run a command there"
-	exit 1
-fi
+source install/common.sh
+
+check_usage $# 2 "Usage: $0 VERSION CMD [ARGS...]\nCreates a container that is connected to the Cassandra cluster, and run a command there"
 
 BRIDGE=br1
 VERSION=$1
+
+test_image $VERSION
 
 # We want to start the client containers from cass254, with decreasing IDs
 id=254

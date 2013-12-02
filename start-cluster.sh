@@ -1,12 +1,14 @@
 #!/bin/bash
 
-if [[ $# -ne 2 ]]; then
-	echo "Usage: $0 <VERSION> <NUMBER OF NODES>"
-	exit 1
-fi
+source install/common.sh
+
+check_usage $# 2 "Usage: $0 <VERSION> <NUMBER OF NODES>"
+
 VERSION=$1
 NODES=$2
 BRIDGE=br1
+
+test_image $VERSION
 
 for id in $(seq 1 $NODES); do
 

@@ -24,6 +24,8 @@ Cassandra nodes are created with their own IP address and configured hostname:
 
 Note that the nodes might take about 30 seconds to show up as they join the Cassandra ring.
 
+The shell scripts all assume that you have `sudo` privilege.
+
 Getting started
 ---------------
 
@@ -44,7 +46,7 @@ The latest version is on GitHub at https://github.com/jpetazzo/pipework.
 
 To create a Cassandra 2.0.3 image and tag it, run:
 
-	$ sudo make image VERSION=2.0.3
+	$ make image VERSION=2.0.3
 
 You should then see it appear in your list of Docker images:
 
