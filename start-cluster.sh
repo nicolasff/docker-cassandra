@@ -17,7 +17,12 @@ for id in $(seq 1 $NODES); do
 	ip=192.168.100.$id
 
 	# start container
-	cid=$(sudo docker run -d -dns 127.0.0.1 -h $hostname -t cassandra:$VERSION /usr/bin/start-cassandra)
+	if [[ $id == 1 ]]; then
+		ports="-p 127.0.0.1:19160:9160 -p 127.0.0.1:19042:9042"
+	else
+		ports=""
+	fi
+	cid=$(sudo docker run -d -dns 127.0.0.1 -h $hostname $ports -t cassandra:$VERSION /usr/bin/start-cassandra)
 
 	# Add network interface
 	sleep 1
