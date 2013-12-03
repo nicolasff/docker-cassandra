@@ -2,7 +2,11 @@
 
 source install/common.sh
 
-check_usage $# 2 "Usage: $0 VERSION CMD [ARGS...]\nCreates a container that is connected to the Cassandra cluster, and run a command there"
+if [[ $# -lt 2 ]]; then
+  echo "Usage: $0 VERSION CMD [ARGS...]"
+  echo "Creates a container that is connected to the Cassandra cluster, and run a command there"
+  exit 1
+fi
 
 BRIDGE=br1
 VERSION=$1
