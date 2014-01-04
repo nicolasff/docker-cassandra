@@ -54,6 +54,9 @@ You should then see it appear in your list of Docker images:
     REPOSITORY          TAG                 ID                  CREATED              SIZE
     cassandra           2.0.3              b9ba84a33bb5        About a minute ago   12.29 kB (virtual 404.7 MB)
 
+    $ ./list-images.sh
+    2.0.3
+
 ### 4. Start a cluster
 
 Run `./start-cluster.sh 2.0.3 3` to create a cluster of 3 nodes running Cassandra 2.0.3. They are given an IP address and name each, from `cass1` (`192.168.100.1`) to `cass3` (`192.168.100.3`).
