@@ -52,3 +52,7 @@ sleep 0.5
 sudo pipework $BRIDGE $cid $ip/24
 
 sudo docker attach $cid
+
+# Destroy container after use
+sudo docker kill $cid > /dev/null
+sudo docker rm $cid > /dev/null
