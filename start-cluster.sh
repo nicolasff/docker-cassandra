@@ -18,7 +18,7 @@ for id in $(seq 1 $NODES); do
 
 	# start container
 	if [[ $id == 1 ]]; then
-		ports="-p 127.0.0.1:19160:9160 -p 127.0.0.1:19042:9042"
+		ports="-p 9160:9160 -p 9042:9042"
 	else
 		ports=""
 	fi
