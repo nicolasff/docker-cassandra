@@ -2,6 +2,7 @@ FROM ubuntu:precise
 MAINTAINER Nicolas Favre-Felix <n.favrefelix@gmail.com>
 
 # Install dependencies
+RUN apt-get -y update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes software-properties-common python-software-properties
 RUN add-apt-repository -y ppa:webupd8team/java
 RUN apt-get -y update
