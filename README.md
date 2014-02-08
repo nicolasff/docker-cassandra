@@ -7,7 +7,7 @@ configured to create a Cassandra 1.2 or 2.0 image and cluster.
 
 Example:
 
-![Sample session](https://i.imgur.com/GeoPVWr.gif)
+![Sample session](https://i.imgur.com/pS8twa3.gif)
 
 Cassandra nodes are created with their own IP address and configured hostname:
 
