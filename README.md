@@ -5,6 +5,10 @@ This repository contains a set of scripts and configuration files to run a Cassa
 from [Docker](https://www.docker.io/) containers. The current version of this repository is
 configured to create a Cassandra 1.2 or 2.0 image and cluster.
 
+Example:
+
+![Sample session](https://i.imgur.com/GeoPVWr.gif)
+
 Cassandra nodes are created with their own IP address and configured hostname:
 
     $ ./start-cluster.sh 2.0.3 3
