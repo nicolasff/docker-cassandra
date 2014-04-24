@@ -45,7 +45,7 @@ done
 
 # start container
 shift # remove version number
-cid=$(sudo docker run -i -d -dns 127.0.0.1 -h $hostname -t cassandra:$VERSION /usr/bin/run-command $@)
+cid=$(sudo docker run -i -d --dns 127.0.0.1 -h $hostname -t cassandra:$VERSION /usr/bin/run-command $@)
 
 # Add network interface
 sleep 0.5
