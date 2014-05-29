@@ -9,7 +9,9 @@ ENV=/root/apache-cassandra/conf/cassandra-env.sh
 
 # Change the listen address so that we can communicate with other nodes
 sed -i -e "s/^listen_address.*/listen_address: $IP/"   $CONFIG
-sed -i -e "s/^rpc_address.*/rpc_address: 0.0.0.0/"   $CONFIG
+sed -i -e 's/^rpc_address.*/rpc_address: 0.0.0.0/'   $CONFIG
+# Start from cassandra 2.1.0 broadcast_rpc_address needs to be defined if rpc_address = 0.0.0.0
+sed -i -e 's/^# broadcast_rpc_address.*/broadcast_rpc_address: 1.2.3.4/'   $CONFIG
 
 # wait 10 seconds instead of 30
 export JVM_OPTS="-Dcassandra.ring_delay_ms=10000"

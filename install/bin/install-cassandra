@@ -1,9 +1,10 @@
 #!/bin/bash
 
 VERSION=$1
+VERSION_DIR=$(sed 's/-.*//g' <<< $VERSION)
 
 # Download and extract
-wget http://archive.apache.org/dist/cassandra/$VERSION/apache-cassandra-$VERSION-bin.tar.gz
+wget http://archive.apache.org/dist/cassandra/$VERSION_DIR/apache-cassandra-$VERSION-bin.tar.gz
 tar -xvzf apache-cassandra-$VERSION-bin.tar.gz
 rm -f apache-cassandra-$VERSION-bin.tar.gz
 mv apache-cassandra-$VERSION /root/
