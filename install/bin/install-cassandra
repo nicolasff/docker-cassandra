@@ -16,4 +16,6 @@ sed -i -e "s/^# num_tokens.*/num_tokens: 256/"      $CONFIG
 sed -i -e "s/^listen_address.*/listen_address: /"   $CONFIG
 sed -i -e "s/^rpc_address.*/rpc_address: 0.0.0.0/"  $CONFIG
 sed -i -e 's/seeds: "127.0.0.1"/seeds: "cass1"/g' $CONFIG
+sed -i -e 's/authenticator: AllowAllAuthenticator/authenticator: PasswordAuthenticator/g' $CONFIG
+sed -i -e 's/authorizer: AllowAllAuthorizer/authorizer: CassandraAuthorizer/g' $CONFIG
 sed -i -e "s/Xss180k/Xss300k/g" $ENV
